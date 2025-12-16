@@ -1,7 +1,7 @@
 
 import React, { useMemo } from 'react';
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-import { AlertTriangle, CheckCircle, Clock, XCircle, Info, FileText } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Clock, XCircle, Info, FileText, Mail } from 'lucide-react';
 import { equipmentList } from '../services/mockData';
 import { EquipmentStatus } from '../types';
 import SEO from './SEO';
@@ -145,7 +145,7 @@ const LabCapabilities: React.FC = () => {
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Status</th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Accuracy</th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Last Cal.</th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Calibration Cert</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Action</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-slate-200">
@@ -162,8 +162,16 @@ const LabCapabilities: React.FC = () => {
                            <FileText className="w-4 h-4 mr-1 text-primary-400 group-hover:text-primary-600" />
                            <span className="underline decoration-dotted">View Cert</span>
                         </a>
+                      ) : (eq.status === EquipmentStatus.CALIBRATION_DUE || eq.status === EquipmentStatus.MAINTENANCE) ? (
+                        <a 
+                          href={`mailto:info@knchemizol.com?subject=Service Request: ${eq.name} (${eq.id})&body=Please schedule calibration/maintenance for ${eq.name}.%0D%0ACurrent Status: ${eq.status}`}
+                          className="inline-flex items-center px-3 py-1.5 rounded-md bg-white border border-amber-300 text-amber-700 hover:bg-amber-50 hover:border-amber-400 transition-colors shadow-sm text-xs font-medium group"
+                        >
+                           <Mail className="w-3.5 h-3.5 mr-1.5 text-amber-500 group-hover:text-amber-700" />
+                           Schedule Service
+                        </a>
                       ) : (
-                        <span className="text-slate-300 italic">Unavailable</span>
+                        <span className="text-slate-300 italic text-xs">Offline</span>
                       )}
                     </td>
                   </tr>
