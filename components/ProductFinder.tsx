@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { Search, Filter, FileText, ChevronRight, CheckSquare, Square, X, BarChart2 } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { productsList } from '../services/mockData';
 import { ProductApplication } from '../types';
+import SEO from './SEO';
 
 const ProductFinder: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -43,6 +45,24 @@ const ProductFinder: React.FC = () => {
         alert("You can only compare up to 3 products at a time.");
       }
     }
+  };
+
+  // Generate Product Schema for Filtered Items
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "numberOfItems": filteredProducts.length,
+    "itemListElement": filteredProducts.map((product, index) => ({
+      "@type": "Product",
+      "position": index + 1,
+      "name": product.name,
+      "description": product.description,
+      "brand": {
+        "@type": "Brand",
+        "name": "KN Chemizol"
+      },
+      "category": product.applications[0]
+    }))
   };
 
   const ComparisonModal = () => {
@@ -122,6 +142,12 @@ const ProductFinder: React.FC = () => {
 
   return (
     <div className="bg-slate-50 min-h-screen py-8 relative">
+      <SEO 
+        title="Additive Product Finder"
+        description="Search our portfolio of 50+ lubricant additives. Filter by chemistry and application."
+        schema={productSchema}
+      />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="mb-8 text-center">

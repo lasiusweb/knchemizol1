@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import AboutUs from './components/AboutUs';
 import Services from './components/Services';
 import Industries from './components/Industries';
+import FAQ from './components/FAQ';
 import SEO from './components/SEO';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -73,24 +74,8 @@ const App: React.FC = () => {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/services" element={<Services />} />
             <Route path="/industries" element={<Industries />} />
-            <Route path="/lab" element={
-              <>
-                <SEO 
-                  title="Analytical Lab Capabilities"
-                  description="View our real-time equipment capability dashboard. 12 operational instruments with ongoing calibration for lubricant analysis."
-                />
-                <LabCapabilities />
-              </>
-            } />
-            <Route path="/products" element={
-              <>
-                <SEO 
-                  title="Additive Product Finder"
-                  description="Search our portfolio of 50+ lubricant additives. Filter by chemistry and application."
-                />
-                <ProductFinder />
-              </>
-            } />
+            <Route path="/lab" element={<LabCapabilities />} />
+            <Route path="/products" element={<ProductFinder />} />
             <Route path="/tools" element={
               <>
                 <SEO 
@@ -109,6 +94,7 @@ const App: React.FC = () => {
                 <Resources />
               </>
             } />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<div className="p-20 text-center text-slate-500">Page under construction</div>} />
           </Routes>

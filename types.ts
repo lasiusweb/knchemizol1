@@ -45,3 +45,10 @@ export interface Resource {
   size: string;
   gated: boolean;
 }
+
+export interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  category: 'General' | 'Automotive' | 'Industrial' | 'Compliance';
+}

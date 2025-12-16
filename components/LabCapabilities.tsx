@@ -4,6 +4,7 @@ import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip, Legend } from 'recha
 import { AlertTriangle, CheckCircle, Clock, XCircle, Info, FileText } from 'lucide-react';
 import { equipmentList } from '../services/mockData';
 import { EquipmentStatus } from '../types';
+import SEO from './SEO';
 
 const LabCapabilities: React.FC = () => {
   const stats = useMemo(() => {
@@ -36,8 +37,28 @@ const LabCapabilities: React.FC = () => {
     }
   };
 
+  // Structured Data for Equipment List
+  const equipmentSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Analytical Laboratory Equipment",
+    "description": "List of operational analytical instruments at KN Chemizol Bidadi facility.",
+    "itemListElement": equipmentList.map((eq, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": eq.name,
+      "description": `${eq.category} | Status: ${eq.status} | Last Calibrated: ${eq.lastCalibration} | Next Calibration Due: ${eq.nextCalibration}`
+    }))
+  };
+
   return (
     <div className="bg-slate-50 min-h-screen py-8">
+      <SEO 
+        title="Analytical Lab Capabilities"
+        description="View our real-time equipment capability dashboard. 12 operational instruments with ongoing calibration for lubricant analysis."
+        schema={equipmentSchema}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="mb-8">

@@ -188,6 +188,7 @@ const Navbar: React.FC = () => {
 
             <Link to="/industries" onClick={closeMenu} className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-50">Industries</Link>
             <Link to="/resources" onClick={closeMenu} className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-50">Resources</Link>
+            <Link to="/faq" onClick={closeMenu} className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-50">FAQ</Link>
             
             <div className="p-4 mt-2">
               <Link to="/contact" onClick={closeMenu} className="block w-full text-center bg-primary-600 text-white px-4 py-3 rounded-md text-base font-medium hover:bg-primary-700 shadow-sm">
