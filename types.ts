@@ -1,3 +1,4 @@
+
 export enum EquipmentStatus {
   OPERATIONAL = 'Operational',
   CALIBRATION_DUE = 'Calibration Due',
@@ -13,6 +14,7 @@ export interface Equipment {
   lastCalibration: string;
   nextCalibration: string;
   accuracy: string;
+  certificateUrl?: string; // New field for transparency
 }
 
 export enum ProductApplication {
@@ -32,6 +34,7 @@ export interface Product {
   chemistry: string;
   benefits: string[];
   pdfUrl?: string;
+  typicalTreatRate?: string;
 }
 
 export interface Resource {

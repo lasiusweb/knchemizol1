@@ -1,3 +1,4 @@
+
 import { Equipment, EquipmentStatus, Product, ProductApplication, Resource } from '../types';
 
 export const equipmentList: Equipment[] = [
@@ -8,7 +9,8 @@ export const equipmentList: Equipment[] = [
     status: EquipmentStatus.OPERATIONAL,
     lastCalibration: '2023-10-15',
     nextCalibration: '2024-04-15',
-    accuracy: '±1 ppm'
+    accuracy: '±1 ppm',
+    certificateUrl: 'CERT-ICP-2023.pdf'
   },
   {
     id: 'EQ-002',
@@ -17,7 +19,8 @@ export const equipmentList: Equipment[] = [
     status: EquipmentStatus.OPERATIONAL,
     lastCalibration: '2023-11-20',
     nextCalibration: '2024-05-20',
-    accuracy: '>99.5%'
+    accuracy: '>99.5%',
+    certificateUrl: 'CERT-FTIR-2023.pdf'
   },
   {
     id: 'EQ-003',
@@ -44,7 +47,8 @@ export const equipmentList: Equipment[] = [
     status: EquipmentStatus.OPERATIONAL,
     lastCalibration: '2024-01-10',
     nextCalibration: '2024-07-10',
-    accuracy: '±0.1%'
+    accuracy: '±0.1%',
+    certificateUrl: 'CERT-NOACK-2024.pdf'
   },
   {
     id: 'EQ-006',
@@ -53,7 +57,8 @@ export const equipmentList: Equipment[] = [
     status: EquipmentStatus.OPERATIONAL,
     lastCalibration: '2023-12-05',
     nextCalibration: '2024-06-05',
-    accuracy: '±1%'
+    accuracy: '±1%',
+    certificateUrl: 'CERT-MRV-2023.pdf'
   },
   {
     id: 'EQ-007',
@@ -62,7 +67,8 @@ export const equipmentList: Equipment[] = [
     status: EquipmentStatus.OPERATIONAL,
     lastCalibration: '2024-02-01',
     nextCalibration: '2024-08-01',
-    accuracy: '0.1 mgKOH/g'
+    accuracy: '0.1 mgKOH/g',
+    certificateUrl: 'CERT-TITR-2024.pdf'
   },
   {
     id: 'EQ-008',
@@ -83,6 +89,7 @@ export const productsList: Product[] = [
     applications: [ProductApplication.ENGINE_OIL, ProductApplication.HYDRAULIC_FLUID],
     chemistry: 'Zinc Dialkyl Dithiophosphate',
     benefits: ['Excellent wear protection', 'Antioxidant properties', 'Cost-effective'],
+    typicalTreatRate: '0.8 - 1.2%'
   },
   {
     id: 'P-205',
@@ -91,6 +98,7 @@ export const productsList: Product[] = [
     applications: [ProductApplication.ENGINE_OIL, ProductApplication.GEAR_OIL],
     chemistry: 'Olefin Copolymer (OCP)',
     benefits: ['High shear stability', 'Good thickening efficiency', 'Low temperature performance'],
+    typicalTreatRate: '5.0 - 12.0%'
   },
   {
     id: 'P-302',
@@ -99,6 +107,7 @@ export const productsList: Product[] = [
     applications: [ProductApplication.ENGINE_OIL, ProductApplication.MARINE],
     chemistry: 'Calcium Sulfonate',
     benefits: ['High TBN retention', 'Excellent rust protection', 'Thermal stability'],
+    typicalTreatRate: '1.5 - 3.0%'
   },
   {
     id: 'P-404',
@@ -107,6 +116,7 @@ export const productsList: Product[] = [
     applications: [ProductApplication.GEAR_OIL],
     chemistry: 'Sulfur-Phosphorus',
     benefits: ['Extreme pressure performance', 'Yellow metal compatibility', 'Thermal stability'],
+    typicalTreatRate: '1.8 - 2.5%'
   },
   {
     id: 'P-501',
@@ -115,6 +125,7 @@ export const productsList: Product[] = [
     applications: [ProductApplication.METALWORKING],
     chemistry: 'Complex Ester',
     benefits: ['Stable emulsion', 'Hard water stability', 'Biostability'],
+    typicalTreatRate: '15.0 - 20.0%'
   }
 ];
 

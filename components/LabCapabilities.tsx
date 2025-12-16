@@ -1,6 +1,7 @@
+
 import React, { useMemo } from 'react';
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-import { AlertTriangle, CheckCircle, Clock, XCircle, Info } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Clock, XCircle, Info, FileText } from 'lucide-react';
 import { equipmentList } from '../services/mockData';
 import { EquipmentStatus } from '../types';
 
@@ -123,7 +124,7 @@ const LabCapabilities: React.FC = () => {
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Status</th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Accuracy</th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Last Cal.</th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Next Due</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Calibration Cert</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-slate-200">
@@ -134,7 +135,16 @@ const LabCapabilities: React.FC = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm">{getStatusBadge(eq.status)}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500">{eq.accuracy}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500">{eq.lastCalibration}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500">{eq.nextCalibration}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                      {eq.status === EquipmentStatus.OPERATIONAL && eq.certificateUrl ? (
+                        <a href="#" className="text-primary-600 hover:text-primary-800 flex items-center group">
+                           <FileText className="w-4 h-4 mr-1 text-primary-400 group-hover:text-primary-600" />
+                           <span className="underline decoration-dotted">View Cert</span>
+                        </a>
+                      ) : (
+                        <span className="text-slate-300 italic">Unavailable</span>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
